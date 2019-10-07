@@ -83,3 +83,41 @@ class IceCreamStand(Restaurant):
             print(flavor)
 ice_stand = IceCreamStand('Морж','Мороженное')
 ice_stand.print_flavors()
+
+#9-7
+
+class Admin(User):
+    def __init__(self):
+        super().__init__(first_name = 'admin',last_name='admin',
+                         years = None,profession = None)
+        self.privileges = ['Может добавить пост','Может удалить пост',
+                           'Может банить пользователей']
+    def show_privileges(self):
+        out = str()
+        for priv in self.privileges:
+            out += priv + ', '
+        print(out)
+
+admin = Admin()
+admin.show_privileges()
+
+#9-8
+
+class Privileges():
+    def __init__(self):
+        self.privileges = ['Может добавить пост', 'Может удалить пост',
+                           'Может банить пользователей']
+    def show_privileges(self):
+        out = str()
+        for priv in self.privileges:
+            out += priv + ', '
+        print(out)
+
+class Admin(User):
+    def __init__(self):
+        super().__init__(first_name = 'admin',last_name='admin',
+                         years = None,profession = None)
+        self.privileges = Privileges()
+
+admin = Admin()
+admin.privileges.show_privileges()
