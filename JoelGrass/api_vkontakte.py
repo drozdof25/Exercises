@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 import vk_api
+import time
 
 
 def main():
-    login, password =
+    login = input('Логин ')
+    password = input('Пароль ')
+    login, password = login, password
     vk_session = vk_api.VkApi(login, password)
     try:
         vk_session.auth(token_only=True)
@@ -12,7 +15,7 @@ def main():
         return
     vk = vk_session.get_api()
     response = vk.wall.get(count=1)
-
+    last_post_id = 0
     if response['items']:
         last_post_id = response['items'][0]['id']
     # like_last_pos = response.likes.getList
